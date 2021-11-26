@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.bwvhp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-// console.log(uri)
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function run() {
@@ -18,6 +18,7 @@ async function run() {
 
         await client.connect();
         // console.log('connected')
+
         const database = client.db('carMechanic')
         const servicesCollection = database.collection('services')
         const orderCollection = database.collection('orders')
